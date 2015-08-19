@@ -18,7 +18,7 @@ zap = ZAPv2()
 
 # Start zap.
 print 'Starting ZAP.'
-subprocess.Popen(['zap.sh','-daemon'])
+subprocess.Popen(['zap.sh','-daemon','-config','api.disablekey=true'])
 print 'Waiting for ZAP to load.'
 
 # Wait until the ZAP API is reachable.
