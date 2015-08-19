@@ -1,14 +1,13 @@
 #!/usr/bin/env python
+
 import subprocess
 import time
 import json
-from pprint import pprint
 import sys
 sys.path.append("./lib")
 from zapv2 import ZAPv2
 
 # Check command line arguments.
-
 if len (sys.argv) < 2:
     print 'Pass the URL of the site to scan as (only) parameter.'
     sys.exit(2)
@@ -34,9 +33,8 @@ while (version == ''):
         # Wait a bit more for ZAP to fully start.
         time.sleep(3)
 
+# Ready for business ;-)
 print 'ZAP version ' + version + ' is running.'
-
-
 
 # Connect to the target.
 print 'Accessing target %s' % target
@@ -65,15 +63,10 @@ while (int(zap.ascan.status()) < 100):
 
 print 'Scan completed'
 
-# Report the results to the console
-#print 'Hosts: ' + ', '.join(zap.core.hosts)
-#print 'Alerts: '
-#pprint (zap.core.alerts())
-
 # Gather results.
 results = json.dumps(zap.core.alerts())
 
-# Print results.
+# Print results to console.
 print results
 
 # Write the results to disk.
