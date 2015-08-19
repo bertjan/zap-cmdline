@@ -10,7 +10,8 @@ Prerequisites
 -------------
 - Python must be installed.
 - OWASP ZAP must be installed.
-- zap,.sh must be in the PATH for the current user.
+- zap.sh must be in the PATH for the current user.
+- npm must be installed (used to install phantomjs)
 
 Usage
 -----

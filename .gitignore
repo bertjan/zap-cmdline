@@ -1,3 +1,4 @@
 .idea
 *.iml
 report.json
+node_modules

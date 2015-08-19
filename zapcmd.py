@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import subprocess
+import os
 import time
 import json
 import sys
@@ -16,9 +17,25 @@ if len (sys.argv) < 2:
 target = sys.argv[1]
 zap = ZAPv2()
 
+# Configuration
+#browser='firefox'
+browser='phantomjs'
+
+# chdir to path of the script to make sure that PhantomJS is installed relatively to the script path.
+scriptPath=os.path.abspath(os.path.dirname(sys.argv[0]))
+os.chdir(scriptPath)
+
+# Install PhantomJS.
+print 'Installing PhantomJS to support AJAX spidering.'
+subprocess.call(['npm','install','phantomjs'])
+
+phantomJSPath=scriptPath + '/node_modules/phantomjs/bin/phantomjs'
+print 'Using PhantomJS binary path ' + phantomJSPath
+
 # Start zap.
 print 'Starting ZAP.'
-subprocess.Popen(['zap.sh','-daemon','-config','api.disablekey=true'])
+subprocess.Popen(['zap.sh','-daemon','-config','api.disablekey=true','-config','ajaxSpider.browserId='+browser,'-config','selenium.phantomJsBinary=' + phantomJSPath])
+
 print 'Waiting for ZAP to load.'
 
 # Wait until the ZAP API is reachable.
