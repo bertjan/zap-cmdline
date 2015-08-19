@@ -31,7 +31,7 @@ while (version == ''):
         time.sleep(1)
     else:
         # Wait a bit more for ZAP to fully start.
-        time.sleep(3)
+        time.sleep(1)
 
 # Ready for business ;-)
 print 'ZAP version ' + version + ' is running.'
@@ -41,6 +41,7 @@ print 'Accessing target %s' % target
 zap.urlopen(target)
 # Give the sites tree a chance to get updated
 time.sleep(2)
+
 
 # Spider the target.
 print 'Spidering target %s' % target
@@ -54,6 +55,20 @@ while (int(zap.spider.status()) < 100):
 print 'Spider completed'
 # Give the passive scanner a chance to finish
 time.sleep(5)
+
+
+# Start AJAX spider.
+print 'AJAX spidering target %s' % target
+zap.ajaxSpider.scan(target)
+
+# Wait for AJAX spider to complete.
+while (zap.ajaxSpider.status != 'stopped'):
+    print 'AJAX spider ' + zap.ajaxSpider.status + ', ' + zap.ajaxSpider.number_of_results + ' results.'
+    time.sleep(1)
+
+print 'AJAX Spider completed'
+# Give the AJAX spider some time to finish.
+time.sleep(3)
 
 print 'Scanning target %s' % target
 zap.ascan.scan(target)
@@ -76,3 +91,4 @@ f.close()
 
 # Shutdown ZAP.
 zap.core.shutdown()
+
