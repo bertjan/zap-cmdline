@@ -1,14 +1,22 @@
-# zap-cmdline
+# ZAP-CMDLine
 =============
-Simple command line interface for automated security scanning with OWASP ZAP
+Simple command line interface for automated security scanning with OWASP ZAP.
 
 Introduction
 -------------
-TODO
+TODO.
 
 Prerequisites
 -------------
-ZAP should be installed and zap.sh should be in the PATH.
+- Python must be installed.
+- OWASP ZAP must be installed.
+- zap,.sh must be in the PATH for the current user.
+
+Usage
+-----
+```
+python zapcmd.py <url-of-site-to-scan> 
+```
 
 Re-generating lib directory
 ---------------------------
