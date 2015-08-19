@@ -1,0 +1,18 @@
+Metadata-Version: 1.1
+Name: python-owasp-zap-v2.4
+Version: 0.0.5
+Summary: OWASP ZAP 2.4 API client
+Home-page: https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project
+Author: ZAP development team
+Author-email: UNKNOWN
+License: ASL2.0
+Download-URL: https://github.com/zaproxy/zaproxy/releases/tag/2.4.1
+Description: OWASP Zed Attack Proxy 2.4 API python client
+Platform: any
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Development Status :: 4 - Beta
+Classifier: Topic :: Security
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: Programming Language :: Python

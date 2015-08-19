@@ -1,0 +1,38 @@
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://shabeer-ali-m.github.io/jPut/js/jput-2.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+</head>
+
+<body style="padding:10px">
+
+<h1>ZAP scan report</h1>
+
+<blockquote>
+    <p class="text-muted lead" style="font-size: 80%">
+        Raw data: <a href="report.json">report.json</a>.</p>
+</blockquote>
+
+<div jput="report" jput-ajax_url="report.json">
+
+    <table class="table table-bordered table-condensed">
+        <tr class="info"><td>Alert</td><td>{{json.alert}}</td></tr>
+        <tr><td>Description</td><td>{{json.description}}</td></tr>
+        <tr><td>URL</td><td><a href="{{json.url}}">{{json.url}}</a></td></tr>
+        <tr><td>Param</td><td>{{json.param}}</td></tr>
+        <tr><td>Evidence</td><td>{{json.evidence}}</td></tr>
+        <tr><td>Attack</td><td>{{json.attack}}</td></tr>
+        <tr><td>Solution</td><td>{{json.solution}}</td></tr>
+        <tr><td>Reference</td><td>{{json.reference}}</td></tr>
+        <tr><td>Other</td><td><pre style="white-space: pre-wrap;">{{json.other}}</pre></td></tr>
+    </table>
+    <br/>
+</div>
+
+</body>
+</html>
