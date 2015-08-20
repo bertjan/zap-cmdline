@@ -63,18 +63,17 @@ time.sleep(2)
 # Spider the target.
 print 'Spidering target %s' % target
 zap.spider.scan(target)
-# Give the Spider a chance to start
 time.sleep(2)
 while (int(zap.spider.status()) < 100):
     print 'Spider progress %: ' + zap.spider.status()
     time.sleep(2)
 
 print 'Spider completed'
-# Give the passive scanner a chance to finish
-time.sleep(5)
+# Give the spider some time to finish.
+time.sleep(2)
 
 
-# Start AJAX spider.
+# Start the AJAX spider.
 print 'AJAX spidering target %s' % target
 zap.ajaxSpider.scan(target)
 
@@ -98,7 +97,7 @@ print 'Scan completed'
 # Gather results.
 results = json.dumps(zap.core.alerts())
 
-# Print results to console.
+# Log results to console.
 print results
 
 # Write the results to disk.
