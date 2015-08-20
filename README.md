@@ -44,10 +44,7 @@ You can integrate this script in a Jenkins job with the following steps:
 1. Make sure that Python and npm are available on your Jenkins node(s).
 2. (optional) Define a String parameter called TARGET_HOST to be able to choose the target host when starting the job.
 3. Use the Custom Tools Plugin [Custom Tools Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Custom+Tools+Plugin) to download and install ZAP at build time. See [here](https://wiki.jenkins-ci.org/display/JENKINS/ZAProxy+Plugin) for instructions.
-4. Create a build step 'Execute shell' that executes the script:
-```
-python ./zapcmd.py ${TARGET_HOST}
-```
+4. Create a build step 'Execute shell' that executes the script: `python ./zapcmd.py ${TARGET_HOST}`
 5. Create a post-build action using the [HTML Publisher Plugin](https://wiki.jenkins-ci.org/display/JENKINS/HTML+Publisher+Plugin) that publishes report.html. 
 
 Packaged dependencies
