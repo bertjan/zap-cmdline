@@ -1,25 +1,33 @@
 #!/usr/bin/env python
 
+import sys
+sys.path.insert(1, "./lib")
 import subprocess
 import os
 import time
 import json
-import sys
-sys.path.append("./lib")
+import string
 from zapv2 import ZAPv2
 
 # Check command line arguments.
 if len (sys.argv) < 2:
-    print 'Pass the URL of the site to scan as (only) parameter.'
+    print 'Pass the URL of the site to scan as first parameter.'
+    print 'Optionally, pass http username and password as 2nd and 3rd parameter.'
     sys.exit(2)
 
 # Use first parameter as URL to scan.
 target = sys.argv[1]
+httpUsername = None
+httpPassword = None
+if len (sys.argv) == 4:
+    httpUsername = sys.argv[2]
+    httpPassword = sys.argv[3]
+    target = string.replace(target, '://', '://' + httpUsername + ':' + httpPassword + '@')
 zap = ZAPv2()
 
 # Configuration
-#browser='firefox'
-browser='phantomjs'
+browser='firefox'
+#browser='phantomjs'
 
 # chdir to path of the script to make sure that PhantomJS is installed relatively to the script path.
 scriptPath=os.path.abspath(os.path.dirname(sys.argv[0]))
@@ -55,10 +63,11 @@ print 'ZAP version ' + version + ' is running.'
 
 # Connect to the target.
 print 'Accessing target %s' % target
-zap.urlopen(target)
+htmlResult = zap.urlopenWithPassword(target, httpUsername, httpPassword)
+print 'Received HTML: ' + htmlResult
+
 # Give the sites tree a chance to get updated
 time.sleep(2)
-
 
 # Spider the target.
 print 'Spidering target %s' % target

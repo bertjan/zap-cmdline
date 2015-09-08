@@ -28,12 +28,12 @@ Usage
 -----
 Syntax:
 ```
-python zapcmd.py <url-of-site-to-scan> 
+python zapcmd.py <url-of-site-to-scan> [username] [password]
 ```
 
 Example:
 ```
-python zapcmd.py http://www.example-site-to-scan.com
+python zapcmd.py https://www.example-site-to-scan.com myUsername myPassword
 ```
 
 
