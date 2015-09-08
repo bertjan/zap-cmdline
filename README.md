@@ -19,7 +19,7 @@ Running on Windows should work with a few minor adjustments.
 
 Prerequisites
 -------------
-- Python must be installed (tested with Python 2.6.9 and 2.7.10)
+- Python must be installed (at least version 2.7)
 - OWASP ZAP must be installed (tested with ZAP 2.4.1)
 - zap.sh must be in the PATH for the current user.
 - npm must be installed and in the PATH (used to install PhantomJS)
