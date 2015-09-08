@@ -26,8 +26,8 @@ if len (sys.argv) == 4:
 zap = ZAPv2()
 
 # Configuration
-browser='firefox'
-#browser='phantomjs'
+#browser='firefox'
+browser='phantomjs'
 
 # chdir to path of the script to make sure that PhantomJS is installed relatively to the script path.
 scriptPath=os.path.abspath(os.path.dirname(sys.argv[0]))
