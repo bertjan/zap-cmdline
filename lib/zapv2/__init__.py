@@ -23,6 +23,7 @@ __docformat__ = 'restructuredtext'
 
 import json
 import urllib
+import ssl
 from acsrf import acsrf
 from ascan import ascan
 from ajaxSpider import ajaxSpider
@@ -147,3 +148,19 @@ class ZAPv2(object):
            - `get`: the disctionary to turn into GET variables.
         """
         return self.urlopen(url + '?' + urllib.urlencode(get))
+
+    def urlopenWithPassword(self, target, username, password):
+        context = ssl._create_unverified_context()
+        urlopener = myURLOpener(proxies=self.__proxies, context=context)
+        if username:
+            print "Setting username/password: " + username + " " + password
+            urlopener.setpasswd(username, password)
+        return urlopener.open(target).read()
+
+class myURLOpener(urllib.FancyURLopener):
+    def setpasswd(self, user, passwd):
+        self.__user = user
+        self.__passwd = passwd
+    def prompt_user_passwd(self, host, realm):
+        return self.__user, self.__passwd
+
