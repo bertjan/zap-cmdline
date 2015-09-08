@@ -53,7 +53,7 @@ This repository contains two folders with packaged dependencies for ease of use.
 
 The 'lib' folder contains the OWASP ZAP Python API. You can re-generate the folder with the following command:
 ```
-wget https://bootstrap.pypa.io/get-pip.py && mkdir lib && python get-pip.py python-owasp-zap-v2.4 -t lib
+rm -rf lib && wget https://bootstrap.pypa.io/get-pip.py && mkdir lib && python get-pip.py python-owasp-zap-v2.4 -t lib && python get-pip.py urllib3 -t lib && rm get-pip.py 
 ```
 
 The 'web' folder contains a local copy of the jQuery, Bootstrap and the [jPut](https://shabeer-ali-m.github.io/jPut) JSON rendering jQuery plugin.
